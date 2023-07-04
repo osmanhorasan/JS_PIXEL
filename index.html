@@ -115,12 +115,12 @@
           <div class="slider">
             <label for="width-range">Grid Width</label>
             <input type="range" id="width-range" min="1" max="35" />
-            <span id="width-value">00</span>
+            <span id="width-value">20</span>
           </div>
           <div class="slider">
             <label for="height-range">Grid Height</label>
             <input type="range" id="height-range" min="1" max="35" />
-            <span id="height-value">00</span>
+            <span id="height-value">20</span>
           </div>
         </div>
 
@@ -234,12 +234,10 @@
       function checker(elementId) {
         let gridColumns = document.querySelectorAll(".gridCol");
         gridColumns.forEach((element) => {
-          if (elementId == element.id) {
-            if (draw && !erase) {
-              element.style.backgroundColor = colorButton.value;
-            } else if (draw && erase) {
-              element.style.backgroundColor = "transparent";
-            }
+          if (draw && !erase && elementId === element.id) {
+            element.style.backgroundColor = colorButton.value;
+          } else if (draw && erase && elementId === element.id) {
+            element.style.backgroundColor = "transparent";
           }
         });
       }
@@ -267,8 +265,8 @@
       });
 
       window.onload = () => {
-        gridHeight.value = 0;
-        gridWidth.value = 0;
+        gridHeight.value = 20;
+        gridWidth.value = 20;
       };
     </script>
   </body>
