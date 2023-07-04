@@ -173,6 +173,7 @@
           up: "touchend",
         },
       };
+
       let deviceType = "";
 
       let draw = false;
@@ -214,13 +215,9 @@
             });
 
             col.addEventListener(events[deviceType].move, (e) => {
-              if (draw) {
-                if (erase) {
-                  e.target.style.backgroundColor = "transparent";
-                } else {
-                  e.target.style.backgroundColor = colorButton.value;
-                }
-              }
+              e.preventDefault(); // Önemli! Kaydırma işlemini engellemek için kullanılır.
+              let elementId = col.id; // Tek bir kare üzerinde gezindiğiniz için elementId'yi değiştirdim.
+              checker(elementId);
             });
 
             col.addEventListener(events[deviceType].up, () => {
